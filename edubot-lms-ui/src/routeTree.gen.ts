@@ -13,7 +13,9 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users/index'
+import { Route as ProgramIndexImport } from './routes/program/index'
 import { Route as UsersAddImport } from './routes/users/add'
+import { Route as ProgramAddImport } from './routes/program/add'
 
 // Create/Update Routes
 
@@ -27,8 +29,18 @@ const UsersIndexRoute = UsersIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ProgramIndexRoute = ProgramIndexImport.update({
+  path: '/program/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const UsersAddRoute = UsersAddImport.update({
   path: '/users/add',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProgramAddRoute = ProgramAddImport.update({
+  path: '/program/add',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -43,11 +55,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/program/add': {
+      id: '/program/add'
+      path: '/program/add'
+      fullPath: '/program/add'
+      preLoaderRoute: typeof ProgramAddImport
+      parentRoute: typeof rootRoute
+    }
     '/users/add': {
       id: '/users/add'
       path: '/users/add'
       fullPath: '/users/add'
       preLoaderRoute: typeof UsersAddImport
+      parentRoute: typeof rootRoute
+    }
+    '/program/': {
+      id: '/program/'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof ProgramIndexImport
       parentRoute: typeof rootRoute
     }
     '/users/': {
@@ -64,7 +90,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
+  ProgramAddRoute,
   UsersAddRoute,
+  ProgramIndexRoute,
   UsersIndexRoute,
 })
 
@@ -77,15 +105,23 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/program/add",
         "/users/add",
+        "/program/",
         "/users/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/program/add": {
+      "filePath": "program/add.tsx"
+    },
     "/users/add": {
       "filePath": "users/add.tsx"
+    },
+    "/program/": {
+      "filePath": "program/index.tsx"
     },
     "/users/": {
       "filePath": "users/index.tsx"

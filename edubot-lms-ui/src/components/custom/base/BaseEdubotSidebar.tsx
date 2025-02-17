@@ -6,7 +6,7 @@ const sidebarItems = [
   { label: 'Manage User', path: '/users' },
   { label: 'Student', path: '/students' },
   { label: 'Organization', path: '/organization' },
-  { label: 'Manage Program', path: '/programs' },
+  { label: 'Manage Program', path: '/program' },
   { label: 'Manage Courses', path: '/manage-courses' },
   { label: 'Submissions', path: '/submissions' },
   { label: 'Manage Batches', path: '/batches' },
